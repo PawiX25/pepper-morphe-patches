@@ -1,5 +1,7 @@
 # Pepper Morphe Patches
 
+> 📦 **Also available for ReVanced** → [pepper-revanced-patches](https://github.com/PawiX25/pepper-revanced-patches) — same patch set, upstream [ReVanced Patcher](https://github.com/ReVanced/revanced-patcher) bundle for use with [ReVanced Manager](https://github.com/ReVanced/revanced-manager).
+
 Morphe-framework port of [pepper-revanced-patches](https://github.com/PawiX25/pepper-revanced-patches).
 
 This is a 1:1 port of the upstream ReVanced patch bundle to the
