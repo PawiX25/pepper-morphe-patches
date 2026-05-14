@@ -99,11 +99,13 @@ def versions_table(targets):
     Experimental versions get a 🧪 prefix.
     Versions with a description get it shown in a second row below.
     """
-    if not targets:
+    # Drop targets with no pinned version (e.g. compatibleWith(package) only).
+    versioned = [t for t in targets if t.get("version")]
+    if not versioned:
         return ""
 
     cells = []
-    for t in targets:
+    for t in versioned:
         ver   = t["version"]
         label = f"🧪&nbsp;{ver}" if t.get("isExperimental") else ver
         cells.append(label)
@@ -113,7 +115,7 @@ def versions_table(targets):
     rows   = [header, sep]
 
     # Optional description row — only rendered if at least one target has one
-    descs = [(t.get("description") or "").replace("\n", "<br>") for t in targets]
+    descs = [(t.get("description") or "").replace("\n", "<br>") for t in versioned]
     if any(descs):
         rows.append("| " + " | ".join(descs) + " |")
 

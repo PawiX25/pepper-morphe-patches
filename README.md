@@ -66,6 +66,11 @@ identical to upstream. Names that ship in the final DEX (e.g.
 are intentionally **not** renamed, to keep the patched output byte-identical
 to the ReVanced build.
 
+## Patches
+
+<!-- PATCHES_START -->
+<!-- PATCHES_END -->
+
 ## License
 
 [GPL-3.0](LICENSE). Patches originate from
