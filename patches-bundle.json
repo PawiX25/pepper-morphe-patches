@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-11T13:48:00",
-  "description": "Morphe-framework port of pepper-revanced-patches. Patches for the Pepper.com Group app family (Pepper PL/NL/SE/US, Mydealz, HotUKDeals, Dealabs, PromoDescuentos, Preisjäger, Chollometros).",
-  "download_url": "https://github.com/PawiX25/pepper-morphe-patches/releases/download/v1.0.0/pepper-morphe-patches-1.0.0.mpp",
+  "created_at": "2026-05-14T00:49:06",
+  "description": "# 1.0.0 (2026-05-14)\n\n\n### Bug Fixes\n\n* add Patches section markers for CI README generator ([3b1b941](https://github.com/PawiX25/pepper-morphe-patches/commit/3b1b94105bb3cd8fd75efba30d9373d4b370ece9))\n* bump for Pepper PL 8.13.02 prebuilt XAPKs ([1488c41](https://github.com/PawiX25/pepper-morphe-patches/commit/1488c41ce56d33193763b3428512a41b3edca96b))\n* handle compatibleWith targets with no pinned version ([1658dd2](https://github.com/PawiX25/pepper-morphe-patches/commit/1658dd26adc39a99cf8dd11d29a6a6e9afa8949c))",
+  "download_url": "https://github.com/PawiX25/pepper-morphe-patches/releases/download/v1.0.0/patches-1.0.0.mpp",
   "signature_download_url": "",
   "version": "1.0.0"
 }

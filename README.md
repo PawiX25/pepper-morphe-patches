@@ -69,6 +69,258 @@ to the ReVanced build.
 ## Patches
 
 <!-- PATCHES_START -->
+> **[v1.0.0](https://github.com/PawiX25/pepper-morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;161 patches total
+<details>
+<summary>📦 Pepper PL&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Pepper NL&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Mydealz&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 HotUKDeals&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 PromoDescuentos&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Chollometros&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Dealabs&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Preisjäger&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Pepper.com&nbsp;&nbsp;•&nbsp;&nbsp;17 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Disable PAIRIP license check](#disable-pairip-license-check) | Removes Google Play's install-source DRM check from the US Pepper.com build, allowing sideloaded APKs to open. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
+<details>
+<summary>📦 Pepper SE&nbsp;&nbsp;•&nbsp;&nbsp;16 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Always show event-theming icons](#always-show-event-theming-icons) | Shows every event-themed app icon in the picker, even when its event is not currently active. |  |
+| [Block Pepper analytics-event-report tracker](#block-pepper-analytics-event-report-tracker) | Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server. |  |
+| [Compact deal cards](#compact-deal-cards) | Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits. |  |
+| [Disable Adjust SDK](#disable-adjust-sdk) | Stops the Adjust SDK from initialising and tracking events. |  |
+| [Disable Google Mobile Ads SDK init](#disable-google-mobile-ads-sdk-init) | Stops the Google Mobile Ads SDK from initialising. |  |
+| [Disable Google Mobile Ads ad-load entry points](#disable-google-mobile-ads-ad-load-entry-points) | Blocks Google's Ad SDK from fetching native ads after init. |  |
+| [Enable debug menu](#enable-debug-menu) | Re-enables the hidden debug menu in the main activity. | • Debug menu resource ID (hex) |
+| [Fix spacing around hidden ad cells](#fix-spacing-around-hidden-ad-cells) | Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens. | • small_ad view-type R.id (hex)<br>• medium_ad view-type R.id (hex)<br>• large_ad view-type R.id (hex) |
+| [Hide banner ads in feed](#hide-banner-ads-in-feed) | Removes the banner ads in the deal feed. |  |
+| [Keep event icon after restart](#keep-event-icon-after-restart) | Keeps the chosen event-themed app icon after the event ends. |  |
+| [Kill Datatransport upload pipeline](#kill-datatransport-upload-pipeline) | Blocks Crashlytics report and Firebase log uploads from leaving the device. |  |
+| [Kill Pepper first-party pixel tracking](#kill-pepper-first-party-pixel-tracking) | Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID. |  |
+| [Neuter tracker auto-init ContentProviders](#neuter-tracker-auto-init-contentproviders) | Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start. |  |
+| [Redirect tracker URLs to localhost](#redirect-tracker-urls-to-localhost) | Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network. |  |
+| [Skip Usercentrics consent screen](#skip-usercentrics-consent-screen) | Skips the Usercentrics consent screen and its loading wait on cold start. |  |
+| [Unlock tier-locked icons](#unlock-tier-locked-icons) | Unlocks all membership-tier app icons in the icon picker. |  |
+
+</details>
+
 <!-- PATCHES_END -->
 
 ## License
