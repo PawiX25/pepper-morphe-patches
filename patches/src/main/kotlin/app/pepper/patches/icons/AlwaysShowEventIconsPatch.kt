@@ -4,7 +4,7 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.pepper.patches.shared.PEPPER_FAMILY
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction11n
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21s
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -40,29 +40,45 @@ val alwaysShowEventIconsPatch = bytecodePatch(
 
         val instructions = impl.instructions.toList()
 
-        // Replace each `iget-boolean v?, v?, L<re2-class>;->f:Z` whose field type is
-        // boolean and field name is "f" with `const/4 v<dest>, 0x0`.
-        // The owning class type is short-obfuscated (e.g. Lre2;) — we don't pin it
-        // by exact name, only by the structural property (single boolean named "f").
+        // The icon model is the class in this method that stores a
+        // `ManifestAliasId` field (conventionally `c`). Pinning to that class
+        // avoids touching unrelated boolean `f` fields on other obfuscated
+        // classes in the same method (e.g. reward `isNew`).
+        val eventIconClasses = instructions
+            .filterIsInstance<ReferenceInstruction>()
+            .mapNotNull { it.reference as? FieldReference }
+            .filter { it.type == "Lcom/pepper/presentation/customappicon/ManifestAliasId;" }
+            .map { it.definingClass }
+            .toSet()
+        if (eventIconClasses.isEmpty()) {
+            throw PatchException(
+                "Could not identify the custom app-icon model from its " +
+                    "ManifestAliasId field."
+            )
+        }
+
+        // Replace each `iget-boolean v?, v?, L<icon-model>;->f:Z` read with
+        // `const/16 v<dest>, 0x0`. `const/16` has the same 2-code-unit width as
+        // `iget-boolean`; a 1-unit `const/4` shifts every following instruction
+        // and can leave branch/try targets in the wrong place (VerifyError in
+        // the 8.21 coroutine state machine).
         var patched = 0
         for (idx in instructions.indices.reversed()) {
             val insn = instructions[idx]
             if (insn.opcode != Opcode.IGET_BOOLEAN) continue
             val ref = (insn as? ReferenceInstruction)?.reference as? FieldReference ?: continue
             if (ref.name != "f" || ref.type != "Z") continue
-            // Defensive — only short obfuscated class names (avoid generic .f flags
-            // on framework classes etc.):
-            if (!ref.definingClass.matches(Regex("L[a-z][a-z0-9]{1,3};"))) continue
+            if (ref.definingClass !in eventIconClasses) continue
 
             val destReg = (insn as OneRegisterInstruction).registerA
-            val newInsn = BuilderInstruction11n(Opcode.CONST_4, destReg, 0)
+            val newInsn = BuilderInstruction21s(Opcode.CONST_16, destReg, 0)
             impl.replaceInstruction(idx, newInsn)
             patched++
         }
         if (patched == 0) {
             throw PatchException(
-                "No iget-boolean Lre2;->f:Z instructions found. " +
-                "isEventThemingAppIcon field may have been renamed/removed."
+                "No iget-boolean isEventThemingAppIcon reads found. " +
+                "The field may have been renamed/removed."
             )
         }
     }

@@ -28,11 +28,12 @@ val enableDebugMenuPatch = bytecodePatch(
 
     val debugMenuResIdOption by stringOption(
         key = "debugMenuResId",
-        default = "0x7f0f0006",
+        default = "0x7f0f0005",
         title = "Debug menu resource ID (hex)",
         description = "Resource ID of R.menu.activity_main_debug. " +
-            "Default 0x7f0f0006 works for v8.12.00; if it shifts, look up the new ID " +
-            "in the APK's res/values/public.xml under name=\"activity_main_debug\".",
+            "Default 0x7f0f0005 works for v8.21.01; older builds use 0x7f0f0006. " +
+            "If it shifts again, look up the new ID in the APK's " +
+            "res/values/public.xml under name=\"activity_main_debug\".",
         required = true,
     )
 

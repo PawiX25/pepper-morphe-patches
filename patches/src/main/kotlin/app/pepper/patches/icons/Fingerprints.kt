@@ -1,7 +1,10 @@
 package app.pepper.patches.icons
 
 import app.morphe.patcher.Fingerprint
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /**
  * Locate the icon-picker builder method by characteristic analytics-name strings
@@ -32,11 +35,13 @@ internal object EventIconsFilterFingerprint : Fingerprint(
 )
 
 /**
- * `jc8.h(boolean, Continuation)Object` — ShouldRestoreEventThemingAppIconToDefaultUseCase.
+ * `(boolean, Continuation)Object` — ShouldRestoreEventThemingAppIconToDefaultUseCase.
  * Pin via:
  *  - 2 params: boolean + Continuation reference
  *  - returns Object (suspend Boolean)
- *  - body uses TimeUnit.MILLISECONDS to compute now-vs-activeUntilDate compare
+ *  - old shape (<= 8.12): body reads TimeUnit.MILLISECONDS directly
+ *  - new shape (8.20): body fetches EventTheming (J field = activeUntilDate),
+ *    reads the current time via a long-returning clock call and compares with CMP_LONG
  */
 internal object ShouldRestoreEventIconFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
@@ -48,10 +53,28 @@ internal object ShouldRestoreEventIconFingerprint : Fingerprint(
             if (!secondParam.startsWith("L") || !secondParam.endsWith(";")) false
             else {
                 val impl = method.implementation
-                impl != null && impl.instructions.any { insn ->
-                    (insn as? ReferenceInstruction)?.reference?.toString()?.contains(
-                        "Ljava/util/concurrent/TimeUnit;->MILLISECONDS",
-                    ) == true
+                if (impl == null) false
+                else {
+                    var hasTimeUnit = false
+                    var hasLongReturningCall = false
+                    var hasLongField = false
+                    var hasLongCompare = false
+                    impl.instructions.forEach { insn ->
+                        if (insn.opcode == Opcode.CMP_LONG) hasLongCompare = true
+                        if (insn is ReferenceInstruction) {
+                            when (val reference = insn.reference) {
+                                is MethodReference -> {
+                                    if (reference.toString().contains(
+                                            "Ljava/util/concurrent/TimeUnit;->MILLISECONDS",
+                                        )
+                                    ) hasTimeUnit = true
+                                    if (reference.returnType == "J") hasLongReturningCall = true
+                                }
+                                is FieldReference -> if (reference.type == "J") hasLongField = true
+                            }
+                        }
+                    }
+                    hasTimeUnit || (hasLongReturningCall && hasLongField && hasLongCompare)
                 }
             }
         }

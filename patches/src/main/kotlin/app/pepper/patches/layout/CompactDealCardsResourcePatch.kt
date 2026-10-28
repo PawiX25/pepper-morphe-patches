@@ -34,7 +34,11 @@ val compactDealCardsResourcePatch = resourcePatch(
         // reference for AAPT2 to strip.
         normalizeSmileyInsets(get("res/drawable"))
 
-        get("res/layout/item_deal_thread_card.xml").patchXml {
+        val dealCardLayout = get("res/layout/item_deal_thread_card_content.xml")
+            .takeIf { it.exists() }
+            ?: get("res/layout/item_deal_thread_card.xml")
+
+        dealCardLayout.patchXml {
             compactDealCard()
         }
         get("res/layout/item_deal_voucher_placeholder_card.xml").patchXml {

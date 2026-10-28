@@ -1,14 +1,15 @@
 package app.pepper.patches.icons
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.pepper.patches.shared.PEPPER_FAMILY
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.immutable.reference.ImmutableFieldReference
 
 /**
  * Unlock tier-locked custom app icons
@@ -26,12 +27,12 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
  * its type at patch time by scanning the matched method for `sget-object` to
  * a self-typed field (where definingClass == fieldType).
  *
- * Replacement uses `removeInstructions(idx, 1) + addInstructions(idx, smali)`
- * rather than `replaceInstructions`: in patcher v21.0.0, replaceInstructions
- * silently failed to update field references on sget-object — the dex builder's
- * field-reference pool was not refreshed and the old reference persisted in
- * the output DEX. The remove+add path goes through the smali compiler, which
- * interns the new field reference correctly.
+ * Replacement uses `replaceInstruction` with an explicitly constructed
+ * `BuilderInstruction21c` + `ImmutableFieldReference`, keeping the original
+ * opcode/width. A `remove + addInstructions` replacement (used previously)
+ * loses the label attached to the replaced instruction: branches that targeted
+ * `sget-object Lnvf;->d` then landed on the following instruction, leaving a
+ * register uninitialised and triggering a Dalvik VerifyError on 8.21.
  */
 @Suppress("unused")
 val unlockTierIconsPatch = bytecodePatch(
@@ -94,11 +95,9 @@ val unlockTierIconsPatch = bytecodePatch(
             if (ref.definingClass != ref.type) continue
 
             val destReg = (insn as OneRegisterInstruction).registerA
-            method.removeInstructions(idx, 1)
-            method.addInstructions(
-                idx,
-                "sget-object v$destReg, ${ref.definingClass}->c:${ref.type}"
-            )
+            val newRef = ImmutableFieldReference(ref.definingClass, "c", ref.type)
+            val newInsn = BuilderInstruction21c(Opcode.SGET_OBJECT, destReg, newRef)
+            method.replaceInstruction(idx, newInsn)
             patched++
         }
         if (patched == 0) {
